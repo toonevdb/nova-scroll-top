@@ -1,1 +1,324 @@
-!function(e){var n={};function t(o){if(n[o])return n[o].exports;var l=n[o]={i:o,l:!1,exports:{}};return e[o].call(l.exports,l,l.exports,t),l.l=!0,l.exports}t.m=e,t.c=n,t.d=function(e,n,o){t.o(e,n)||Object.defineProperty(e,n,{configurable:!1,enumerable:!0,get:o})},t.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(n,"a",n),n},t.o=function(e,n){return Object.prototype.hasOwnProperty.call(e,n)},t.p="",t(t.s=1)}([function(e,n,t){(function(){"use strict";function t(e){for(var n=arguments.length<=1||void 0===arguments[1]?{}:arguments[1],t={speed:500,minDuration:250,maxDuration:1500,cancelOnUserAction:!0,element:window,horizontal:!1,onComplete:void 0,passive:!0,offset:0},o=Object.keys(t),l=0;l<o.length;l++){var i=o[l];void 0!==n[i]&&(t[i]=n[i])}if(!t.cancelOnUserAction&&t.passive&&(t.passive=!1,n.passive&&console&&console.warn('animated-scroll-to:\n "passive" was set to "false" to prevent errors, as using "cancelOnUserAction: false" doesn\'t work with passive events.')),e instanceof HTMLElement)if(n.element&&n.element instanceof HTMLElement)e=t.horizontal?e.getBoundingClientRect().left+n.element.scrollLeft-n.element.getBoundingClientRect().left:e.getBoundingClientRect().top+n.element.scrollTop-n.element.getBoundingClientRect().top;else if(t.horizontal){var c=window.scrollX||document.documentElement.scrollLeft;e=c+e.getBoundingClientRect().left}else{var r=window.scrollY||document.documentElement.scrollTop;e=r+e.getBoundingClientRect().top}e+=t.offset,t.isWindow=t.element===window;var s=null,d=0,m=null;t.isWindow?t.horizontal?(s=window.scrollX||document.documentElement.scrollLeft,d=window.scrollY||document.documentElement.scrollTop,m=Math.max(document.body.scrollWidth,document.documentElement.scrollWidth,document.body.offsetWidth,document.documentElement.offsetWidth,document.body.clientWidth,document.documentElement.clientWidth)-window.innerWidth):(s=window.scrollY||document.documentElement.scrollTop,d=window.scrollX||document.documentElement.scrollLeft,m=Math.max(document.body.scrollHeight,document.documentElement.scrollHeight,document.body.offsetHeight,document.documentElement.offsetHeight,document.body.clientHeight,document.documentElement.clientHeight)-window.innerHeight):t.horizontal?(s=t.element.scrollLeft,m=t.element.scrollWidth-t.element.clientWidth):(s=t.element.scrollTop,m=t.element.scrollHeight-t.element.clientHeight),e>m&&(e=m);var u=e-s;if(0!==u){var a=Math.abs(Math.round(u/1e3*t.speed));a<t.minDuration?a=t.minDuration:a>t.maxDuration&&(a=t.maxDuration);var f=Date.now(),w=null,v=null,p={passive:t.passive};t.cancelOnUserAction?(v=function(){h(),cancelAnimationFrame(w)},window.addEventListener("keydown",v,p),window.addEventListener("mousedown",v,p)):(v=function(e){e.preventDefault()},window.addEventListener("scroll",v,p)),window.addEventListener("wheel",v,p),window.addEventListener("touchstart",v,p);var h=function(){window.removeEventListener("wheel",v,p),window.removeEventListener("touchstart",v,p),t.cancelOnUserAction?(window.removeEventListener("keydown",v,p),window.removeEventListener("mousedown",v,p)):window.removeEventListener("scroll",v,p)},E=function(){var n=Date.now()-f,o=n/a-1,l=o*o*o+1,i=Math.round(s+u*l),c=function(e){t.isWindow?t.horizontal?t.element.scrollTo(e,d):t.element.scrollTo(d,e):t.horizontal?t.element.scrollLeft=e:t.element.scrollTop=e};n<a&&i!==e?(c(i),w=requestAnimationFrame(E)):(c(e),cancelAnimationFrame(w),h(),t.onComplete&&"function"==typeof t.onComplete&&t.onComplete())};w=requestAnimationFrame(E)}else t.onComplete&&"function"==typeof t.onComplete&&t.onComplete()}void 0!==e&&e.exports&&(e.exports=t,n=e.exports),n.default=t}).call(this)},function(e,n,t){e.exports=t(2)},function(e,n,t){"use strict";Object.defineProperty(n,"__esModule",{value:!0});var o=t(0),l=t.n(o);Nova.booting(function(e,n){n.beforeEach(function(e,n,t){setTimeout(function(){void 0!==document.activeElement.type&&document.activeElement.closest("div[dusk*=index-component]")?l()(document.activeElement.closest("div[dusk*=index-component]").offsetTop):l()(0)},100),t()})})}]);
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+(function() {
+  'use strict';
+
+  // desiredOffset - page offset to scroll to
+  // speed - duration of the scroll per 1000px
+  function __ANIMATE_SCROLL_TO(desiredOffset) {
+    var userOptions = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
+
+    var options = {
+      speed: 500,
+      minDuration: 250,
+      maxDuration: 1500,
+      cancelOnUserAction: true,
+      element: window,
+      horizontal: false,
+      onComplete: undefined,
+      passive: true,
+      offset: 0
+    };
+
+    var optionsKeys = Object.keys(options);
+
+    // Override default options
+    for (var i = 0; i < optionsKeys.length; i++) {
+      var key = optionsKeys[i];
+
+      if (typeof userOptions[key] !== 'undefined') {
+        options[key] = userOptions[key];
+      }
+    }
+
+    if (!options.cancelOnUserAction && options.passive) {
+      options.passive = false;
+      if (userOptions.passive) {
+        console && console.warn(
+          'animated-scroll-to:\n "passive" was set to "false" to prevent errors, ' +
+          'as using "cancelOnUserAction: false" doesn\'t work with passive events.')
+      }
+    }
+
+    if (desiredOffset instanceof HTMLElement) {
+      if (userOptions.element && userOptions.element instanceof HTMLElement) {
+        if (options.horizontal) {
+          desiredOffset = (desiredOffset.getBoundingClientRect().left + userOptions.element.scrollLeft)
+            - userOptions.element.getBoundingClientRect().left;
+        } else {
+          desiredOffset = (desiredOffset.getBoundingClientRect().top + userOptions.element.scrollTop)
+            - userOptions.element.getBoundingClientRect().top;
+        }
+      } else if (options.horizontal) {
+        var scrollLeft = window.scrollX || document.documentElement.scrollLeft;
+        desiredOffset = scrollLeft + desiredOffset.getBoundingClientRect().left;
+      } else {
+        var scrollTop = window.scrollY || document.documentElement.scrollTop;
+        desiredOffset = scrollTop + desiredOffset.getBoundingClientRect().top;
+      }
+    }
+
+    // Add additonal user offset
+    desiredOffset += options.offset
+
+    options.isWindow = options.element === window;
+
+    var initialScrollPosition = null;
+    var initialAxisScollPosition = 0;
+    var maxScroll = null;
+
+    if (options.isWindow) {
+      if (options.horizontal) {
+        // get cross browser scroll positions
+        initialScrollPosition = window.scrollX || document.documentElement.scrollLeft;
+        initialAxisScollPosition = window.scrollY || document.documentElement.scrollTop;
+        // cross browser document height minus window height
+        maxScroll = Math.max(
+          document.body.scrollWidth, document.documentElement.scrollWidth,
+          document.body.offsetWidth, document.documentElement.offsetWidth,
+          document.body.clientWidth, document.documentElement.clientWidth
+        ) - window.innerWidth;
+      } else {
+        // get cross browser scroll positions
+        initialScrollPosition = window.scrollY || document.documentElement.scrollTop;
+        initialAxisScollPosition = window.scrollX || document.documentElement.scrollLeft;
+        // cross browser document width minus window width
+        maxScroll = Math.max(
+          document.body.scrollHeight, document.documentElement.scrollHeight,
+          document.body.offsetHeight, document.documentElement.offsetHeight,
+          document.body.clientHeight, document.documentElement.clientHeight
+        ) - window.innerHeight;
+      }
+    } else {
+      // DOM element
+      if (options.horizontal) {
+        initialScrollPosition = options.element.scrollLeft;
+        maxScroll = options.element.scrollWidth - options.element.clientWidth;
+      } else {
+        initialScrollPosition = options.element.scrollTop;
+        maxScroll = options.element.scrollHeight - options.element.clientHeight;
+      }
+    }
+
+    // If the scroll position is greater than maximum available scroll
+    if (desiredOffset > maxScroll) {
+      desiredOffset = maxScroll;
+    }
+
+    // Calculate diff to scroll
+    var diff = desiredOffset - initialScrollPosition;
+
+    // Do nothing if the page is already there
+    if (diff === 0) {
+      // Execute callback if there is any
+      if (options.onComplete && typeof options.onComplete === 'function') {
+        options.onComplete()
+      }
+
+      return;
+    }
+
+    // Calculate duration of the scroll
+    var duration = Math.abs(Math.round((diff / 1000) * options.speed));
+
+    // Set minimum and maximum duration
+    if (duration < options.minDuration) {
+      duration = options.minDuration;
+    } else if (duration > options.maxDuration) {
+      duration = options.maxDuration;
+    }
+
+    var startingTime = Date.now();
+
+    // Request animation frame ID
+    var requestID = null;
+
+    // Method handler
+    var handleUserEvent = null;
+    var userEventOptions = { passive: options.passive };
+
+    if (options.cancelOnUserAction) {
+      // Set handler to cancel scroll on user action
+      handleUserEvent = function() {
+        removeListeners();
+        cancelAnimationFrame(requestID);
+      };
+      window.addEventListener('keydown', handleUserEvent, userEventOptions);
+      window.addEventListener('mousedown', handleUserEvent, userEventOptions);
+    } else {
+      // Set handler to prevent user actions while scroll is active
+      handleUserEvent = function(e) { e.preventDefault(); };
+      window.addEventListener('scroll', handleUserEvent, userEventOptions);
+    }
+
+    window.addEventListener('wheel', handleUserEvent, userEventOptions);
+    window.addEventListener('touchstart', handleUserEvent, userEventOptions);
+
+    var removeListeners = function () {
+      window.removeEventListener('wheel', handleUserEvent, userEventOptions);
+      window.removeEventListener('touchstart', handleUserEvent, userEventOptions);
+
+      if (options.cancelOnUserAction) {
+        window.removeEventListener('keydown', handleUserEvent, userEventOptions);
+        window.removeEventListener('mousedown', handleUserEvent, userEventOptions);
+      } else {
+        window.removeEventListener('scroll', handleUserEvent, userEventOptions);
+      }
+    };
+
+    var step = function () {
+      var timeDiff = Date.now() - startingTime;
+      var t = (timeDiff / duration) - 1;
+      var easing = t * t * t + 1;
+      var scrollPosition = Math.round(initialScrollPosition + (diff * easing));
+
+      var doScroll = function(position) {
+        if (options.isWindow) {
+          if (options.horizontal) {
+            options.element.scrollTo(position, initialAxisScollPosition);
+          } else {
+            options.element.scrollTo(initialAxisScollPosition, position);
+          }
+        } else if (options.horizontal) {
+          options.element.scrollLeft = position;
+        } else {
+          options.element.scrollTop = position;
+        }
+      }
+
+      if (timeDiff < duration && scrollPosition !== desiredOffset) {
+        // If scroll didn't reach desired offset or time is not elapsed
+        // Scroll to a new position
+        // And request a new step
+        doScroll(scrollPosition);
+
+        requestID = requestAnimationFrame(step);
+      } else {
+        // If the time elapsed or we reached the desired offset
+        // Set scroll to the desired offset (when rounding made it to be off a pixel or two)
+        // Clear animation frame to be sure
+        doScroll(desiredOffset);
+
+        cancelAnimationFrame(requestID);
+
+        // Remove listeners
+        removeListeners();
+
+        // Animation is complete, execute callback if there is any
+        if (options.onComplete && typeof options.onComplete === 'function') {
+          options.onComplete()
+        }
+      }
+    };
+
+    // Start animating scroll
+    requestID = requestAnimationFrame(step);
+  }
+
+  if (true) {
+    if (typeof module !== 'undefined' && module.exports) {
+      module.exports = __ANIMATE_SCROLL_TO;
+      exports = module.exports;
+    }
+    exports.default = __ANIMATE_SCROLL_TO;
+  } else if (window) {
+    window.animateScrollTo = __ANIMATE_SCROLL_TO;
+  }
+}).call(this);
+
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(2);
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_animated_scroll_to__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_animated_scroll_to___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_animated_scroll_to__);
+
+
+Nova.booting(function (Vue, router) {
+    router.beforeEach(function (to, from, next) {
+        setTimeout(function () {
+            __WEBPACK_IMPORTED_MODULE_0_animated_scroll_to___default()(0);
+        }, 100);
+        next();
+    });
+});
+
+/***/ })
+/******/ ]);
